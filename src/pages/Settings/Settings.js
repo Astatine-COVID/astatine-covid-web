@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Sidebar from "../../components/Sidebar";
-import { RECORDS_PAGE } from "../../constants";
+import { SETTINGS_PAGE } from "../../constants";
 
 const drawerWidth = 220;
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Records(props) {
+function Settings(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -79,7 +79,7 @@ function Records(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Records
+            Settings
           </Typography>
         </Toolbar>
       </AppBar>
@@ -99,7 +99,7 @@ function Records(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <Sidebar selectedPage={RECORDS_PAGE} />
+            <Sidebar selectedPage={SETTINGS_PAGE} />
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -110,7 +110,7 @@ function Records(props) {
             variant="permanent"
             open
           >
-            <Sidebar selectedPage={RECORDS_PAGE} />
+            <Sidebar selectedPage={SETTINGS_PAGE} />
           </Drawer>
         </Hidden>
       </nav>
@@ -121,7 +121,7 @@ function Records(props) {
   );
 }
 
-Records.propTypes = {
+Settings.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -129,4 +129,4 @@ Records.propTypes = {
   window: PropTypes.func,
 };
 
-export default Records;
+export default Settings;
