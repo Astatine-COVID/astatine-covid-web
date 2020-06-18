@@ -7,8 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import Sidebar from "../../components/Sidebar";
 import { RECORDS_PAGE } from "../../constants";
@@ -51,18 +50,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Records(props) {
-  const { window } = props;
+export default function Records(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div className={classes.root}>
@@ -87,7 +82,6 @@ function Records(props) {
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
-            container={container}
             variant="temporary"
             anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
@@ -120,13 +114,3 @@ function Records(props) {
     </div>
   );
 }
-
-Records.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
-
-export default Records;
