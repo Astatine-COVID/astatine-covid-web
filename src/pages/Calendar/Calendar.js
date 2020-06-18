@@ -9,10 +9,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Sidebar from "../../components/Sidebar";
-import { CALENDAR_PAGE } from '../../constants';
+import { CALENDAR_PAGE } from "../../constants";
 
 const drawerWidth = 220;
 
@@ -56,6 +56,15 @@ export default function Calendar() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [calendarEvents, setCalendarEvents] = useState([]);
+
+  useEffect(() => {
+    fetchCalendarEvents();
+  }, []);
+
+  const fetchCalendarEvents = () => {
+    // TODO: AAdd code to fetche data from firebase for the account's testing location
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -113,11 +122,13 @@ export default function Calendar() {
       <section className={classes.content}>
         <div className={classes.toolbar} />
         <FullCalendar
+          allDaySlot={false}
+          eventColor="#f50057"
           defaultView="timeGridWeek"
+          events={calendarEvents}
+          height="auto"
           plugins={[timeGrid]}
           slotDuration="00:15:00"
-          allDaySlot={false}
-          height="auto"
         />
       </section>
     </div>
