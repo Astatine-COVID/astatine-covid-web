@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Dashboard from "../pages/Dashboard";
+import Calendar from "../pages/Calendar";
 import Login from '../pages/Login';
 
 export default function AppRouter() {
@@ -9,7 +9,7 @@ export default function AppRouter() {
     <Router>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard/calendar" component={Calendar} />
       </Switch>
     </Router>
   );

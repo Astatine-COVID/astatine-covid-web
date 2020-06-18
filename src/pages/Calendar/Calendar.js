@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveDrawer(props) {
+function Calendar(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -78,7 +78,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Astatine
+            Calendar
           </Typography>
         </Toolbar>
       </AppBar>
@@ -139,7 +139,7 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
+Calendar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -147,4 +147,4 @@ ResponsiveDrawer.propTypes = {
   window: PropTypes.func,
 };
 
-export default ResponsiveDrawer;
+export default Calendar;

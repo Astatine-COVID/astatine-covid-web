@@ -1,11 +1,12 @@
 import Divider from "@material-ui/core/Divider";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
 import { makeStyles } from "@material-ui/core/styles";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import SettingsIcon from "@material-ui/icons/Settings";
+import TodayIcon from "@material-ui/icons/Today";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,25 +22,24 @@ export default function Sidebar() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <TodayIcon />
+          </ListItemIcon>
+          <ListItemText primary="Calendar" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <AssignmentIndIcon />
+          </ListItemIcon>
+          <ListItemText primary="Records" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItem>
       </List>
     </div>
   );
