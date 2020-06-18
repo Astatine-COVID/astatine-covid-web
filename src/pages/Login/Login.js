@@ -67,11 +67,15 @@ export default function Login(props) {
   return (
     <div className={classes.root}>
       <div className={classes.title}>
-        <Typography color="primary" variant="h2">
-          Astatine
-        </Typography>
-        <Typography color="secondary" variant="h6">
-          COVID-19 Testing Center Locator
+        <img
+          alt="Logo"
+          className ="logo"
+          src="/images/logos/locator.png"
+        />
+       <br/>
+       <br/>
+        <Typography color="secondary" variant="h10">
+          COVID-19 Testing Center Locator and Appointment Dashboard
         </Typography>
       </div>
       <p className={classes.subtitle}>Welcome Back!</p>

@@ -23,8 +23,16 @@ function Sidebar(props) {
 
   return (
     <div>
-      <div className={classes.toolbar} />
+      <img
+          alt="Logo"
+          className ="dsbbdlogo"
+          src="/images/logos/locator.png"
+        />
+      
+      
       <Divider />
+      <p className='loginIdent'>You are logged in as </p>
+      <p className='loginIdent'>Quest Diagnostics - Weatherford, Texas</p>
       <List>
         <ListItem
           button
