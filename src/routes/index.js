@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Calendar from "../pages/Calendar";
 import Login from '../pages/Login';
+import Records from '../pages/Records';
 
 export default function AppRouter() {
   return (
@@ -10,6 +11,7 @@ export default function AppRouter() {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route path="/dashboard/calendar" component={Calendar} />
+        <Route path="/dashboard/records" component={Records} />
       </Switch>
     </Router>
   );

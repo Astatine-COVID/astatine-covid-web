@@ -7,14 +7,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import SettingsIcon from "@material-ui/icons/Settings";
 import TodayIcon from "@material-ui/icons/Today";
+import PropTypes from "prop-types";
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { CALENDAR_PAGE, RECORDS_PAGE, SETTINGS_PAGE } from "../../constants";
 
 const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
 }));
 
-export default function Sidebar() {
+function Sidebar(props) {
   const classes = useStyles();
 
   return (
@@ -22,19 +26,34 @@ export default function Sidebar() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <ListItem button>
+        <ListItem
+          button
+          component={Link}
+          to="/dashboard/calendar"
+          selected={props.selectedPage === CALENDAR_PAGE}
+        >
           <ListItemIcon>
             <TodayIcon />
           </ListItemIcon>
           <ListItemText primary="Calendar" />
         </ListItem>
-        <ListItem button>
+        <ListItem
+          button
+          component={Link}
+          to="/dashboard/records"
+          selected={props.selectedPage === RECORDS_PAGE}
+        >
           <ListItemIcon>
             <AssignmentIndIcon />
           </ListItemIcon>
           <ListItemText primary="Records" />
         </ListItem>
-        <ListItem button>
+        <ListItem
+          button
+          component={Link}
+          to="/dashboard/settings"
+          selected={props.selectedPage === SETTINGS_PAGE}
+        >
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
@@ -44,3 +63,9 @@ export default function Sidebar() {
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  selectedPage: PropTypes.string.isRequired,
+};
+
+export default Sidebar;

@@ -1,5 +1,3 @@
-import FullCalendar from "@fullcalendar/react";
-import timeGrid from "@fullcalendar/timegrid";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -13,7 +11,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Sidebar from "../../components/Sidebar";
-import { CALENDAR_PAGE } from '../../constants';
+import { RECORDS_PAGE } from "../../constants";
 
 const drawerWidth = 220;
 
@@ -81,7 +79,7 @@ function Calendar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Calendar
+            Records
           </Typography>
         </Toolbar>
       </AppBar>
@@ -101,7 +99,7 @@ function Calendar(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <Sidebar selectedPage={CALENDAR_PAGE} />
+            <Sidebar selectedPage={RECORDS_PAGE} />
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -112,19 +110,12 @@ function Calendar(props) {
             variant="permanent"
             open
           >
-            <Sidebar selectedPage={CALENDAR_PAGE} />
+            <Sidebar selectedPage={RECORDS_PAGE} />
           </Drawer>
         </Hidden>
       </nav>
       <section className={classes.content}>
         <div className={classes.toolbar} />
-        <FullCalendar
-          defaultView="timeGridWeek"
-          plugins={[timeGrid]}
-          slotDuration="00:15:00"
-          allDaySlot={false}
-          height="auto"
-        />
       </section>
     </div>
   );
