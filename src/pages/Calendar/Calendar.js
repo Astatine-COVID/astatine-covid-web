@@ -1,5 +1,5 @@
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGrid from "@fullcalendar/timegrid";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -117,7 +117,13 @@ function Calendar(props) {
       </nav>
       <section className={classes.content}>
         <div className={classes.toolbar} />
-        <FullCalendar defaultView="dayGridMonth" plugins={[dayGridPlugin]} />
+        <FullCalendar
+          defaultView="timeGridWeek"
+          plugins={[timeGrid]}
+          slotDuration="00:15:00"
+          allDaySlot={false}
+          height="auto"
+        />
       </section>
     </div>
   );
