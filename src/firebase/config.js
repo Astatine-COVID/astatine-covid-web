@@ -12,12 +12,28 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
+function gotData(data){
+  console.log(data.val())
+  let patients = data.val(); 
+    let keys = Object.keys(patients);
+    console.log(keys)
+}
+
+function errData(data){
+  console.log('Error!')
+}
+
 export default class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
-
+    const database = app.database(); 
+    const ref = database.ref('patients');
+    console.log(ref)
+    ref.on('value',gotData,errData)
     this.auth = app.auth();
   }
+
+
 
   createUser(email, password) {
     this.auth.createUserWithEmailAndPassword(email, password);

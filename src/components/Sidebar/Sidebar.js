@@ -32,7 +32,7 @@ function Sidebar(props) {
       
       <Divider />
       <p className='loginIdent'>You are logged in as </p>
-      <p className='loginIdent'>Quest Diagnostics - Weatherford, Texas</p>
+      <p className='loginIdent'>Quest Diagnostics Weatherford, Texas</p>
       <List>
         <ListItem
           button

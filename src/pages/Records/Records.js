@@ -9,7 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import AddIcon from "@material-ui/icons/Add";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
+import { Form } from './Form';
+import ReactDOM from 'react-dom'; 
 
 // Material-UI table imports
 import Table from "@material-ui/core/Table";
@@ -22,6 +24,13 @@ import Paper from "@material-ui/core/Paper";
 
 import Sidebar from "../../components/Sidebar";
 import { RECORDS_PAGE } from "../../constants";
+
+//modal 
+import Modal from "./Modal";
+import useModal from './useModal';
+
+//firebase
+import Firebase, { FirebaseContext } from "../../firebase";
 
 const drawerWidth = 220;
 
@@ -68,21 +77,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function Records(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [records, setRecords] = useState([]);
+ 
 
   useEffect(() => {
     fetchRecords();
   }, []);
 
+  const {isShowing,toggle} = useModal(); 
+
   const fetchRecords = () => {
+    
     // TODO: Replace fake data with fetched firebase records for the location
     setRecords([
       {
-        fullName: "Joe Smith",
+        fullName: "Eva Lam",
         testDate: "06/16/2020",
         result: "Positive",
       },
@@ -98,12 +113,23 @@ export default function Records(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleAddButtonClick = () => {
+ 
+  
+  const handleAddButtonClick = ({toggle}) => {
+   
+  
     // TODO: Present modal for adding a new record (or implement a feature
     //  to update past tests with new data such as test results, etc.)
+    console.log('yooooo add button clicked')
+   
+
   };
 
+
+  
+
   return (
+    
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
@@ -123,10 +149,16 @@ export default function Records(props) {
           <Button
             color="secondary"
             variant="contained"
-            onClick={handleAddButtonClick}
+            onClick={toggle}
           >
             <AddIcon />
+            
+
           </Button>
+          <Modal
+            isShowing={isShowing}
+             hide={toggle}
+          />
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="application navigation">
@@ -182,8 +214,14 @@ export default function Records(props) {
               ))}
             </TableBody>
           </Table>
+
+          <textarea placeholer="enter text here ..."></textarea>
         </TableContainer>
+        
+        
       </section>
     </div>
+
+
   );
 }
